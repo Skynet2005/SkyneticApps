@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import BattleSimulatorNavbar from "../_components/battle-simulator/BattleSimulatorNavbar";
 
-interface ProtectedLayoutProps {
+interface BattleSimulatorLayoutProps {
   children: React.ReactNode;
   locale: string;
 }
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-const BattleSimulatorLayout = ({ children, locale }: ProtectedLayoutProps) => (
+const BattleSimulatorLayout = ({ children, locale }: BattleSimulatorLayoutProps) => (
   <div className="flex h-screen flex-col items-center justify-center mt-20">
     <div className="absolute z-10 text-center pl-20 pr-[35px] m-2 rounded-lg shadow-lg overflow-y-auto h-full w-full">
       <BattleSimulatorNavbar locale={locale} />

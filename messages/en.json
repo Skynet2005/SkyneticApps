@@ -1,0 +1,97 @@
+{
+  "NavbarLinks": {
+    "home": "Home",
+    "homeTitle": "Home page",
+    "about": "About",
+    "aboutTitle": "About page",
+    "profile": "Profile",
+    "profileTitle": "Profile page",
+    "savedBattles": "Saved Battles"
+  },
+  "HomePage": {
+    "title": "Battle Simulator"
+  },
+  "AboutPage": {
+    "title": "About"
+  },
+  "ProfilePage": {
+    "title": "Profile"
+  },
+  "SavedBattlesPage": {
+    "title": "Saved Battles"
+  },
+  "BattleSimulator": {
+    "simulateBattle": "Simulate Battle",
+    "explainBattle": "Explain Battle",
+    "saveReport": "Save Report",
+    "openAIApiKey": "OpenAI API Key",
+    "enterApiKey": "Enter your OpenAI API key to enable battle explanations. Your API key will be stored locally in your browser and not sent anywhere else. You can find your API key here.",
+    "apiKeyPlaceholder": "Enter your OpenAI API Key here",
+    "apiKeyTitle": "OpenAI API Key",
+    "apiKeyDescription": "Generate your OpenAI API Key. Rest assured, your API Key will remain private and will not be stored or transmitted.",
+    "apiKeyLinkText": "Here"
+  },
+  "PlayerInput": {
+    "playerNumber": "Player Number",
+    "name": "Name",
+    "infantryCount": "Infantry Count",
+    "infantryPercentage": "Infantry Percentage",
+    "lancerCount": "Lancer Count",
+    "lancerPercentage": "Lancer Percentage",
+    "marksmenCount": "Marksmen Count",
+    "marksmenPercentage": "Marksmen Percentage",
+    "totalTroops": "Total Troops",
+    "infantryLevel": "Infantry Level",
+    "lancerLevel": "Lancer Level",
+    "marksmenLevel": "Marksmen Level",
+    "specialBonuses": "Special Bonuses",
+    "troopStats": "Troop Stats",
+    "usePercentage": "Use Percentage",
+    "troopsAttack": "Troops Attack",
+    "troopsDefense": "Troops Defense",
+    "troopsLethality": "Troops Lethality",
+    "troopsHealth": "Troops Health",
+    "enemyTroopsAttack": "Enemy Troops Attack",
+    "enemyTroopsDefense": "Enemy Troops Defense",
+    "defenderTroopsAttack": "Defender Troops Attack",
+    "defenderTroopsDefense": "Defender Troops Defense",
+    "defenderTroopsLethality": "Defender Troops Lethality",
+    "defenderTroopsHealth": "Defender Troops Health",
+    "rallyTroopsAttack": "Rally Troops Attack",
+    "rallyTroopsDefense": "Rally Troops Defense",
+    "rallyTroopsLethality": "Rally Troops Lethality",
+    "rallyTroopsHealth": "Rally Troops Health",
+    "petSkillEnemyLethalityPenalty": "Pet Skill Enemy Lethality Penalty",
+    "petSkillEnemyHealthPenalty": "Pet Skill Enemy Health Penalty",
+    "petSkillAttackBonus": "Pet Skill Attack Bonus",
+    "petSkillLethalityBonus": "Pet Skill Lethality Bonus",
+    "attack": "Attack",
+    "defense": "Defense",
+    "lethality": "Lethality",
+    "health": "Health",
+    "infantry": "Infantry",
+    "lancer": "Lancer",
+    "marksmen": "Marksmen",
+    "bonusType": "Bonus Type",
+    "value": "Value",
+    "useCount": "Use Count"
+  },
+  "BattleResults": {
+    "battleReport": "Battle Report",
+    "winner": "Winner",
+    "counterRatiosDuringBattle": "Counter Ratios during Battle",
+    "shouldUse": "should use",
+    "infantry": "Infantry",
+    "lancer": "Lancer",
+    "marksmen": "Marksmen",
+    "troops": "Troops",
+    "totalTroops": "Total Troops",
+    "injured": "Injured",
+    "lightlyInjured": "Lightly Injured",
+    "survivors": "Survivors",
+    "power": "Power",
+    "powerLoss": "Power Loss",
+    "remainingPower": "Remaining Power",
+    "troopTypeRatio": "Troop Type Ratio"
+  }
+}

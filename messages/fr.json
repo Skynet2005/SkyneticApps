@@ -1,0 +1,97 @@
+{
+  "NavbarLinks": {
+    "home": "Accueil",
+    "homeTitle": "Page d'accueil",
+    "about": "À propos",
+    "aboutTitle": "Page à propos",
+    "profile": "Profil",
+    "profileTitle": "Page de profil",
+    "savedBattles": "Batailles enregistrées"
+  },
+  "HomePage": {
+    "title": "Simulateur de Bataille"
+  },
+  "AboutPage": {
+    "title": "À propos"
+  },
+  "ProfilePage": {
+    "title": "Profil"
+  },
+  "SavedBattlesPage": {
+    "title": "Batailles enregistrées"
+  },
+  "BattleSimulator": {
+    "simulateBattle": "Simuler la bataille",
+    "explainBattle": "Expliquer la bataille",
+    "saveReport": "Enregistrer le rapport",
+    "openAIApiKey": "Clé API OpenAI",
+    "enterApiKey": "Entrez votre clé API OpenAI pour activer les explications de bataille. Votre clé API sera stockée localement dans votre navigateur et ne sera envoyée nulle part ailleurs. Vous pouvez trouver votre clé API ici.",
+    "apiKeyPlaceholder": "Entrez votre clé API OpenAI ici",
+    "apiKeyTitle": "Clé API OpenAI",
+    "apiKeyDescription": "Générez votre clé API OpenAI. Soyez assuré que votre clé API restera privée et ne sera ni stockée ni transmise.",
+    "apiKeyLinkText": "Ici"
+  },
+  "PlayerInput": {
+    "playerNumber": "Numéro de joueur",
+    "name": "Nom",
+    "infantryCount": "Nombre d'infanterie",
+    "infantryPercentage": "Pourcentage d'infanterie",
+    "lancerCount": "Nombre de lanciers",
+    "lancerPercentage": "Pourcentage de lanciers",
+    "marksmenCount": "Nombre de tireurs d'élite",
+    "marksmenPercentage": "Pourcentage de tireurs d'élite",
+    "totalTroops": "Total des troupes",
+    "infantryLevel": "Niveau d'infanterie",
+    "lancerLevel": "Niveau de lanciers",
+    "marksmenLevel": "Niveau de tireurs d'élite",
+    "specialBonuses": "Bonus spéciaux",
+    "troopStats": "Statistiques des troupes",
+    "usePercentage": "Utiliser le pourcentage",
+    "troopsAttack": "Attaque des troupes",
+    "troopsDefense": "Défense des troupes",
+    "troopsLethality": "Létalité des troupes",
+    "troopsHealth": "Santé des troupes",
+    "enemyTroopsAttack": "Attaque des troupes ennemies",
+    "enemyTroopsDefense": "Défense des troupes ennemies",
+    "defenderTroopsAttack": "Attaque des troupes de défense",
+    "defenderTroopsDefense": "Défense des troupes de défense",
+    "defenderTroopsLethality": "Létalité des troupes de défense",
+    "defenderTroopsHealth": "Santé des troupes de défense",
+    "rallyTroopsAttack": "Attaque des troupes de ralliement",
+    "rallyTroopsDefense": "Défense des troupes de ralliement",
+    "rallyTroopsLethality": "Létalité des troupes de ralliement",
+    "rallyTroopsHealth": "Santé des troupes de ralliement",
+    "petSkillEnemyLethalityPenalty": "Pénalité de létalité ennemie de compétence de familier",
+    "petSkillEnemyHealthPenalty": "Pénalité de santé ennemie de compétence de familier",
+    "petSkillAttackBonus": "Bonus d'attaque de compétence de familier",
+    "petSkillLethalityBonus": "Bonus de létalité de compétence de familier",
+    "attack": "Attaque",
+    "defense": "Défense",
+    "lethality": "Létalité",
+    "health": "Santé",
+    "infantry": "Infanterie",
+    "lancer": "Lancier",
+    "marksmen": "Tireurs d'élite",
+    "bonusType": "Type de bonus",
+    "value": "Valeur",
+    "useCount": "Nombre d'utilisations"
+  },
+  "BattleResults": {
+    "battleReport": "Rapport de bataille",
+    "winner": "Gagnant",
+    "counterRatiosDuringBattle": "Ratios de contre pendant la bataille",
+    "shouldUse": "devrait utiliser",
+    "infantry": "Infanterie",
+    "lancer": "Lancier",
+    "marksmen": "Tireurs d'élite",
+    "troops": "Troupes",
+    "totalTroops": "Total des troupes",
+    "injured": "Blessé",
+    "lightlyInjured": "Légèrement blessé",
+    "survivors": "Survivants",
+    "power": "Puissance",
+    "powerLoss": "Perte de puissance",
+    "remainingPower": "Puissance restante",
+    "troopTypeRatio": "Ratio de type de troupes"
+  }
+}

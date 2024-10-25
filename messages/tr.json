@@ -1,0 +1,97 @@
+{
+  "NavbarLinks": {
+    "home": "Ana Sayfa",
+    "homeTitle": "Ana sayfa",
+    "about": "Hakkında",
+    "aboutTitle": "Hakkında sayfası",
+    "profile": "Profil",
+    "profileTitle": "Profil sayfası",
+    "savedBattles": "Kayıtlı Savaşlar"
+  },
+  "HomePage": {
+    "title": "Savaş Simülatörü"
+  },
+  "AboutPage": {
+    "title": "Hakkında"
+  },
+  "ProfilePage": {
+    "title": "Profil"
+  },
+  "SavedBattlesPage": {
+    "title": "Kayıtlı Savaşlar"
+  },
+  "BattleSimulator": {
+    "simulateBattle": "Savaşı Simüle Et",
+    "explainBattle": "Savaşı Açıkla",
+    "saveReport": "Raporu Kaydet",
+    "openAIApiKey": "OpenAI API Anahtarı",
+    "enterApiKey": "Savaş açıklamalarını etkinleştirmek için OpenAI API anahtarınızı girin. API anahtarınız tarayıcınızda yerel olarak saklanacak ve başka hiçbir yere gönderilmeyecek. API anahtarınızı buradan bulabilirsiniz.",
+    "apiKeyPlaceholder": "OpenAI API Anahtarınızı buraya girin",
+    "apiKeyTitle": "OpenAI API Anahtarı",
+    "apiKeyDescription": "OpenAI API Anahtarınızı oluşturun. API Anahtarınızın gizli kalacağını ve saklanmayacağını veya iletilmeyeceğini unutmayın.",
+    "apiKeyLinkText": "Burada"
+  },
+  "PlayerInput": {
+    "playerNumber": "Oyuncu Numarası",
+    "name": "İsim",
+    "infantryCount": "Piyade Sayısı",
+    "infantryPercentage": "Piyade Yüzdesi",
+    "lancerCount": "Lancer Sayısı",
+    "lancerPercentage": "Lancer Yüzdesi",
+    "marksmenCount": "Nişancı Sayısı",
+    "marksmenPercentage": "Nişancı Yüzdesi",
+    "totalTroops": "Toplam Asker",
+    "infantryLevel": "Piyade Seviyesi",
+    "lancerLevel": "Lancer Seviyesi",
+    "marksmenLevel": "Nişancı Seviyesi",
+    "specialBonuses": "Özel Bonuslar",
+    "troopStats": "Asker İstatistikleri",
+    "usePercentage": "Yüzdeyi Kullan",
+    "troopsAttack": "Asker Saldırısı",
+    "troopsDefense": "Asker Savunması",
+    "troopsLethality": "Asker Ölümcüllüğü",
+    "troopsHealth": "Asker Sağlığı",
+    "enemyTroopsAttack": "Düşman Asker Saldırısı",
+    "enemyTroopsDefense": "Düşman Asker Savunması",
+    "defenderTroopsAttack": "Savunmacı Asker Saldırısı",
+    "defenderTroopsDefense": "Savunmacı Asker Savunması",
+    "defenderTroopsLethality": "Savunmacı Asker Ölümcüllüğü",
+    "defenderTroopsHealth": "Savunmacı Asker Sağlığı",
+    "rallyTroopsAttack": "Ralli Asker Saldırısı",
+    "rallyTroopsDefense": "Ralli Asker Savunması",
+    "rallyTroopsLethality": "Ralli Asker Ölümcüllüğü",
+    "rallyTroopsHealth": "Ralli Asker Sağlığı",
+    "petSkillEnemyLethalityPenalty": "Evcil Hayvan Yeteneği Düşman Ölümcüllük Cezası",
+    "petSkillEnemyHealthPenalty": "Evcil Hayvan Yeteneği Düşman Sağlık Cezası",
+    "petSkillAttackBonus": "Evcil Hayvan Yeteneği Saldırı Bonusu",
+    "petSkillLethalityBonus": "Evcil Hayvan Yeteneği Ölümcüllük Bonusu",
+    "attack": "Saldırı",
+    "defense": "Savunma",
+    "lethality": "Ölümcüllük",
+    "health": "Sağlık",
+    "infantry": "Piyade",
+    "lancer": "Lancer",
+    "marksmen": "Nişancı",
+    "bonusType": "Bonus Türü",
+    "value": "Değer",
+    "useCount": "Kullanım Sayısı"
+  },
+  "BattleResults": {
+    "battleReport": "Savaş Raporu",
+    "winner": "Kazanan",
+    "counterRatiosDuringBattle": "Savaş Sırasındaki Karşı Oranlar",
+    "shouldUse": "kullanmalı",
+    "infantry": "Piyade",
+    "lancer": "Lancer",
+    "marksmen": "Nişancı",
+    "troops": "Askerler",
+    "totalTroops": "Toplam Asker",
+    "injured": "Yaralı",
+    "lightlyInjured": "Hafif Yaralı",
+    "survivors": "Hayatta Kalanlar",
+    "power": "Güç",
+    "powerLoss": "Güç Kaybı",
+    "remainingPower": "Kalan Güç",
+    "troopTypeRatio": "Asker Türü Oranı"
+  }
+}

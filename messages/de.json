@@ -1,0 +1,97 @@
+{
+  "NavbarLinks": {
+    "home": "Startseite",
+    "homeTitle": "Startseite",
+    "about": "Über",
+    "aboutTitle": "Über Seite",
+    "profile": "Profil",
+    "profileTitle": "Profilseite",
+    "savedBattles": "Gespeicherte Schlachten"
+  },
+  "HomePage": {
+    "title": "Schlachtsimulator"
+  },
+  "AboutPage": {
+    "title": "Über"
+  },
+  "ProfilePage": {
+    "title": "Profil"
+  },
+  "SavedBattlesPage": {
+    "title": "Gespeicherte Schlachten"
+  },
+  "BattleSimulator": {
+    "simulateBattle": "Schlacht simulieren",
+    "explainBattle": "Schlacht erklären",
+    "saveReport": "Bericht speichern",
+    "openAIApiKey": "OpenAI API-Schlüssel",
+    "enterApiKey": "Geben Sie Ihren OpenAI API-Schlüssel ein, um Schlachterklärungen zu aktivieren. Ihr API-Schlüssel wird lokal in Ihrem Browser gespeichert und nicht an andere Orte gesendet. Sie können Ihren API-Schlüssel hier finden.",
+    "apiKeyPlaceholder": "Geben Sie Ihren OpenAI API-Schlüssel hier ein",
+    "apiKeyTitle": "OpenAI API-Schlüssel",
+    "apiKeyDescription": "Generieren Sie Ihren OpenAI API-Schlüssel. Seien Sie versichert, Ihr API-Schlüssel bleibt privat und wird nicht gespeichert oder übertragen.",
+    "apiKeyLinkText": "Hier"
+  },
+  "PlayerInput": {
+    "playerNumber": "Spielernummer",
+    "name": "Name",
+    "infantryCount": "Infanterieanzahl",
+    "infantryPercentage": "Infanterieprozentsatz",
+    "lancerCount": "Lanzenreiteranzahl",
+    "lancerPercentage": "Lanzenreiterprozentsatz",
+    "marksmenCount": "Schützenanzahl",
+    "marksmenPercentage": "Schützenprozentsatz",
+    "totalTroops": "Gesamte Truppen",
+    "infantryLevel": "Infanteriestufe",
+    "lancerLevel": "Lanzenreiterstufe",
+    "marksmenLevel": "Schützenstufe",
+    "specialBonuses": "Spezialboni",
+    "troopStats": "Truppenstatistiken",
+    "usePercentage": "Prozentsatz verwenden",
+    "troopsAttack": "Truppenangriff",
+    "troopsDefense": "Truppenverteidigung",
+    "troopsLethality": "Truppentödlichkeit",
+    "troopsHealth": "Truppengesundheit",
+    "enemyTroopsAttack": "Feindliche Truppenangriff",
+    "enemyTroopsDefense": "Feindliche Truppenverteidigung",
+    "defenderTroopsAttack": "Verteidigertruppenangriff",
+    "defenderTroopsDefense": "Verteidigertruppenverteidigung",
+    "defenderTroopsLethality": "Verteidigertruppentödlichkeit",
+    "defenderTroopsHealth": "Verteidigertruppengesundheit",
+    "rallyTroopsAttack": "Rallye-Truppenangriff",
+    "rallyTroopsDefense": "Rallye-Truppenverteidigung",
+    "rallyTroopsLethality": "Rallye-Truppentödlichkeit",
+    "rallyTroopsHealth": "Rallye-Truppengesundheit",
+    "petSkillEnemyLethalityPenalty": "Haustierfertigkeit Feindtödlichkeitsstrafe",
+    "petSkillEnemyHealthPenalty": "Haustierfertigkeit Feindgesundheitsstrafe",
+    "petSkillAttackBonus": "Haustierfertigkeit Angriffsbonus",
+    "petSkillLethalityBonus": "Haustierfertigkeit Tödlichkeitsbonus",
+    "attack": "Angriff",
+    "defense": "Verteidigung",
+    "lethality": "Tödlichkeit",
+    "health": "Gesundheit",
+    "infantry": "Infanterie",
+    "lancer": "Lanzenreiter",
+    "marksmen": "Schützen",
+    "bonusType": "Bonustyp",
+    "value": "Wert",
+    "useCount": "Verwendungsanzahl"
+  },
+  "BattleResults": {
+    "battleReport": "Schlachtbericht",
+    "winner": "Gewinner",
+    "counterRatiosDuringBattle": "Gegenverhältnisse während der Schlacht",
+    "shouldUse": "sollte verwenden",
+    "infantry": "Infanterie",
+    "lancer": "Lanzenreiter",
+    "marksmen": "Schützen",
+    "troops": "Truppen",
+    "totalTroops": "Gesamte Truppen",
+    "injured": "Verletzt",
+    "lightlyInjured": "Leicht verletzt",
+    "survivors": "Überlebende",
+    "power": "Macht",
+    "powerLoss": "Machtverlust",
+    "remainingPower": "Verbleibende Macht",
+    "troopTypeRatio": "Truppentypverhältnis"
+  }
+}

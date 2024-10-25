@@ -1,0 +1,97 @@
+{
+  "NavbarLinks": {
+    "home": "Início",
+    "homeTitle": "Página inicial",
+    "about": "Sobre",
+    "aboutTitle": "Página sobre",
+    "profile": "Perfil",
+    "profileTitle": "Página de perfil",
+    "savedBattles": "Batalhas Salvas"
+  },
+  "HomePage": {
+    "title": "Simulador de Batalha"
+  },
+  "AboutPage": {
+    "title": "Sobre"
+  },
+  "ProfilePage": {
+    "title": "Perfil"
+  },
+  "SavedBattlesPage": {
+    "title": "Batalhas Salvas"
+  },
+  "BattleSimulator": {
+    "simulateBattle": "Simular Batalha",
+    "explainBattle": "Explicar Batalha",
+    "saveReport": "Salvar Relatório",
+    "openAIApiKey": "Chave API OpenAI",
+    "enterApiKey": "Insira sua chave API OpenAI para habilitar explicações de batalha. Sua chave API será armazenada localmente em seu navegador e não será enviada para nenhum outro lugar. Você pode encontrar sua chave API aqui.",
+    "apiKeyPlaceholder": "Insira sua chave API OpenAI aqui",
+    "apiKeyTitle": "Chave API OpenAI",
+    "apiKeyDescription": "Gere sua chave API OpenAI. Fique tranquilo, sua chave API permanecerá privada e não será armazenada ou transmitida.",
+    "apiKeyLinkText": "Aqui"
+  },
+  "PlayerInput": {
+    "playerNumber": "Número do Jogador",
+    "name": "Nome",
+    "infantryCount": "Contagem de Infantaria",
+    "infantryPercentage": "Porcentagem de Infantaria",
+    "lancerCount": "Contagem de Lanceiros",
+    "lancerPercentage": "Porcentagem de Lanceiros",
+    "marksmenCount": "Contagem de Atiradores",
+    "marksmenPercentage": "Porcentagem de Atiradores",
+    "totalTroops": "Total de Tropas",
+    "infantryLevel": "Nível de Infantaria",
+    "lancerLevel": "Nível de Lanceiros",
+    "marksmenLevel": "Nível de Atiradores",
+    "specialBonuses": "Bônus Especiais",
+    "troopStats": "Estatísticas das Tropas",
+    "usePercentage": "Usar Porcentagem",
+    "troopsAttack": "Ataque das Tropas",
+    "troopsDefense": "Defesa das Tropas",
+    "troopsLethality": "Letalidade das Tropas",
+    "troopsHealth": "Saúde das Tropas",
+    "enemyTroopsAttack": "Ataque das Tropas Inimigas",
+    "enemyTroopsDefense": "Defesa das Tropas Inimigas",
+    "defenderTroopsAttack": "Ataque das Tropas Defensoras",
+    "defenderTroopsDefense": "Defesa das Tropas Defensoras",
+    "defenderTroopsLethality": "Letalidade das Tropas Defensoras",
+    "defenderTroopsHealth": "Saúde das Tropas Defensoras",
+    "rallyTroopsAttack": "Ataque das Tropas de Reunião",
+    "rallyTroopsDefense": "Defesa das Tropas de Reunião",
+    "rallyTroopsLethality": "Letalidade das Tropas de Reunião",
+    "rallyTroopsHealth": "Saúde das Tropas de Reunião",
+    "petSkillEnemyLethalityPenalty": "Penalidade de Letalidade Inimiga de Habilidade de Mascote",
+    "petSkillEnemyHealthPenalty": "Penalidade de Saúde Inimiga de Habilidade de Mascote",
+    "petSkillAttackBonus": "Bônus de Ataque de Habilidade de Mascote",
+    "petSkillLethalityBonus": "Bônus de Letalidade de Habilidade de Mascote",
+    "attack": "Ataque",
+    "defense": "Defesa",
+    "lethality": "Letalidade",
+    "health": "Saúde",
+    "infantry": "Infantaria",
+    "lancer": "Lanceiro",
+    "marksmen": "Atiradores",
+    "bonusType": "Tipo de Bônus",
+    "value": "Valor",
+    "useCount": "Contagem de Uso"
+  },
+  "BattleResults": {
+    "battleReport": "Relatório de Batalha",
+    "winner": "Vencedor",
+    "counterRatiosDuringBattle": "Proporções de Contra-ataque durante a Batalha",
+    "shouldUse": "deve usar",
+    "infantry": "Infantaria",
+    "lancer": "Lanceiro",
+    "marksmen": "Atiradores",
+    "troops": "Tropas",
+    "totalTroops": "Total de Tropas",
+    "injured": "Feridos",
+    "lightlyInjured": "Levemente Feridos",
+    "survivors": "Sobreviventes",
+    "power": "Poder",
+    "powerLoss": "Perda de Poder",
+    "remainingPower": "Poder Restante",
+    "troopTypeRatio": "Proporção de Tipo de Tropas"
+  }
+}

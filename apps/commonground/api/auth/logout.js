@@ -2,6 +2,10 @@ import {reply,failure,method,cookie,digestToken,db,clearSessionCookie,sameOrigin
 export default async function handler(req,res){
  if(!method(req,res,["POST"]))return;
  try{
+  if(!configured()||process.env.SHARED_BETA_ENABLED!=="true"){
+   clearSessionCookie(res);
+   return reply(res,200,{authenticated:false,mode:"local-only"});
+  }
   if(!sameOrigin(req))return reply(res,403,{error:"Request origin not permitted"});
   if(configured()){
    const token=cookie(req,"cg_session");

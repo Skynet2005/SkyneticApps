@@ -29,8 +29,12 @@ try{
   // mark a migration applied when its own transaction has failed.
   console.log("Applying",filename);
   try{
-   await client.query(content);
+   const m=content.match(/^\s*(?:(?:--[^\n]*\n)\s*)*BEGIN;\s*([\s\S]*?)\s*COMMIT;\s*$/i);
+   if(!m)throw Error("Migration lacks transaction wrapper: "+filename);
+   await client.query("BEGIN");
+   await client.query(m[1]);
    await client.query("INSERT INTO public.commonground_schema_migrations(filename,sha256) VALUES($1,$2)",[filename,sha256]);
+   await client.query("COMMIT");
   }catch(error){await client.query("ROLLBACK").catch(()=>{});throw error}
  }
  console.log("Schema migration check complete");

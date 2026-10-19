@@ -37,6 +37,7 @@ export default async function handler(req,res){
    return reply(res,201,{case:output});
   }
   if(!uuid(data.id))return reply(res,400,{error:"Invalid case id"});
+  if(!Number.isSafeInteger(data.expectedVersion)||data.expectedVersion<1)return reply(res,400,{error:"Expected case version required"});
   const props=["title","summary","rule_reference","evidence_summary","proposed_resolution"];
   const patch={};
   for(const k of props){if(data[k]!==undefined)patch[k]=stringField(data[k],k==="title"?180:12000)}
@@ -50,7 +51,9 @@ export default async function handler(req,res){
   const result=await asActor(actor,async client=>{
    const found=await client.query("SELECT * FROM app.cases WHERE id=$1 AND created_by=$2 AND deleted_at IS NULL FOR UPDATE",[data.id,actor]);
    if(!found.rowCount)return null;
-   const before=found.rows[0],diff={};
+   const before=found.rows[0];
+   if(before.version!==data.expectedVersion)throw Object.assign(new Error("Case changed in another session. Reload before editing."),{status:409});
+   const diff={};
    for(const [key,to] of Object.entries(patch)){if(to!==before[key])diff[key]={from:before[key],to}}
    if(!Object.keys(diff).length)return {case:before,unchanged:true};
    const version=before.version+1;

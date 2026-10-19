@@ -1,7 +1,7 @@
 
 import React,{useEffect,useRef,useState} from "react";
 import {LockKeyhole,Upload,Download,Trash2,ShieldCheck,FileText,EyeOff,Eye,AlertTriangle,Info,FolderLock,RefreshCw,CheckCircle2} from "lucide-react";
-import {addEvidence,listEvidence,retrieveEvidence,removeEvidence,downloadEvidence,VAULT_NOTICE,MAX_FILE_BYTES} from "./vault.js";
+import {addEvidence,listEvidence,retrieveEvidence,removeEvidence,downloadEvidence,VAULT_NOTICE,MAX_FILE_BYTES,exportEncryptedVaultBackup,restoreEncryptedVaultBackup} from "./vault.js";
 
 function fmt(bytes){return bytes>=1024*1024?(bytes/1024/1024).toFixed(2)+" MB":Math.ceil(bytes/1024)+" KB";}
 export default function VaultView({caseId,compact=false,cases=[]}){
@@ -13,6 +13,7 @@ export default function VaultView({caseId,compact=false,cases=[]}){
  const [error,setError]=useState("");
  const [message,setMessage]=useState("");
  const picker=useRef(null);
+ const importPicker=useRef(null);
  useEffect(()=>{if(caseId)setTargetCase(caseId)},[caseId]);
  async function refresh(){try{setRows(await listEvidence(caseId||undefined));setError("")}catch(e){setError(e.message)}}
  useEffect(()=>{refresh()},[caseId]);
@@ -38,6 +39,8 @@ export default function VaultView({caseId,compact=false,cases=[]}){
    setMessage("Evidence decrypted locally and SHA-256 checked before download.");
   }catch(err){setError(err.message)}finally{setBusy("")}
  }
+ async function backup(){setBusy("backup");setError("");try{const count=await exportEncryptedVaultBackup();setMessage("Encrypted backup exported with "+count+" item(s). Keep the backup and passphrase in different safe places.");}catch(e){setError(e.message)}finally{setBusy("")}}
+ async function restore(e){const file=e.target.files?.[0];e.target.value="";if(!file)return;if(!confirm("Import ciphertext from this encrypted vault backup? These files will be added on this device; existing files remain."))return;setBusy("restore");setError("");try{const count=await restoreEncryptedVaultBackup(file);await refresh();setMessage(count+" encrypted item(s) restored. Decryption still requires their original passphrases.");}catch(err){setError(err.message)}finally{setBusy("")}}
  async function remove(row){
   if(!confirm("Permanently delete this local encrypted evidence file? This cannot be undone."))return;
   setBusy(row.id);setError("");
@@ -60,7 +63,7 @@ export default function VaultView({caseId,compact=false,cases=[]}){
     </div>
     <button className="btn" disabled={!!busy||phrase.length<12} onClick={()=>picker.current?.click()}><Upload size={16}/>{busy==="upload"?"Encrypting…":"Choose file to encrypt"}</button>
     <input ref={picker} type="file" style={{display:"none"}} onChange={choose} />
-    <p className="vault-foot">Up to 8 MB per file. Different files may use different passphrases. Passphrases are never saved. Encryption cannot confirm that the file is authentic.</p>
+    <p className="vault-foot">Up to 8 MB per file. Different files may use different passphrases. Passphrases are never saved. Encryption cannot confirm that the file is authentic.</p>{!compact?<div className="vault-backup"><strong>Encrypted backups</strong><p>Export ciphertext for safekeeping or restore a previously exported vault. Your backup does not contain a passphrase.</p><div><button className="btn outline" disabled={!!busy} onClick={backup}><Download size={15}/> Export vault backup</button><button className="btn outline" disabled={!!busy} onClick={()=>importPicker.current?.click()}><Upload size={15}/> Restore backup</button></div><input ref={importPicker} type="file" accept=".json,application/json" hidden onChange={restore}/></div>:null}
     {error?<div className="vault-feedback error" role="alert"><AlertTriangle size={17}/>{error}</div>:null}
     {message?<div className="vault-feedback success" role="status"><CheckCircle2 size={17}/>{message}</div>:null}
    </div>

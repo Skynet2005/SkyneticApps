@@ -43,3 +43,9 @@
 .detail-actions{flex-wrap:wrap}
 @media(max-width:1020px){.vault-grid,.guide-layout{grid-template-columns:1fr}.guide-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.vault-badge{display:none}}
 @media(max-width:620px){.vault-info{padding:18px;align-items:flex-start}.vault-icon-large{width:42px;height:42px;flex-shrink:0}.vault-info h3{font-size:13px}.vault-info p{font-size:10px}.guide-menu{grid-template-columns:1fr}.guide-step-list{padding:0 16px}.guide-top{padding:20px}.guide-bottom{margin:14px}.guide-references{margin:0 14px 18px}.detail-actions{width:100%}.detail-actions .btn{flex:1}}
+
+.vault-backup{border-top:1px solid #e4ecf0;margin-top:20px;padding-top:17px}
+.vault-backup strong{display:block;font-size:12px;color:#2d4757}
+.vault-backup p{font-size:10px;color:#8196a4;line-height:1.6;margin:8px 0 12px}
+.vault-backup>div{display:flex;gap:8px;flex-wrap:wrap}
+.vault-backup .btn{font-size:10px;padding:9px 11px}

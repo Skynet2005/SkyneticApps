@@ -2,7 +2,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {STARTER_CASES,caseChecks,scoreCase,safeImport,appendEvent,verifyCase,verifyEvents} from "../src/engine.js";
-import {sealEvidence,openEvidence,MAX_FILE_BYTES} from "../src/vault.js";
+import {sealEvidence,openEvidence,MAX_FILE_BYTES,packEncryptedRecord,unpackEncryptedRecord} from "../src/vault.js";
 import {GUIDES,guideForCategory,docketMarkdown,lawURL} from "../src/procedures.js";
 
 test("five procedural checklist items are explicit and deterministic",()=>{
@@ -67,4 +67,14 @@ test("case brief documents unverified nature and includes source info",()=>{
  assert.ok(text.includes("independently authenticated"));
  assert.ok(text.includes("Cypress Bay Estates"));
  assert.ok(text.includes("## Procedural documentation checklist"));
+});
+
+test("encrypted backup encoding round-trips without losing file integrity",async()=>{
+ const sealed=await sealEvidence(new TextEncoder().encode("archive sample"),"original.txt","text/plain","backup-passphrase-123");
+ const record={...sealed,id:"original-id",caseId:"test-case",createdAt:new Date().toISOString()};
+ const restored=unpackEncryptedRecord(packEncryptedRecord(record));
+ assert.notEqual(restored.id,record.id);
+ const opened=await openEvidence(restored,"backup-passphrase-123");
+ assert.equal(opened.filename,"original.txt");
+ assert.equal(new TextDecoder().decode(opened.data),"archive sample");
 });

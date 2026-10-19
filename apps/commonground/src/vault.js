@@ -92,3 +92,49 @@ export function downloadEvidence({filename,mimeType,data}){
  const a=document.createElement("a");a.href=url;a.download=safeName;document.body.append(a);a.click();a.remove();
  setTimeout(()=>URL.revokeObjectURL(url),5000);
 }
+
+
+// Portable backup of encrypted ciphertext. The backup never includes the passphrase,
+// but visible timestamps and case IDs remain unencrypted metadata.
+const ARRAY_KEYS=["salt","bodyIv","metaIv","body","header"];
+function encodeB64(value){
+ const x=bytes(value);let binary="";
+ for(let i=0;i<x.length;i+=16384)binary+=String.fromCharCode(...x.subarray(i,i+16384));
+ return btoa(binary);
+}
+function decodeB64(str){
+ if(typeof str!=="string"||str.length>12*1024*1024)throw Error("Invalid encrypted item encoding.");
+ const binary=atob(str);const out=new Uint8Array(binary.length);
+ for(let i=0;i<binary.length;i++)out[i]=binary.charCodeAt(i);
+ return out;
+}
+export function packEncryptedRecord(record){
+ return {...record,...Object.fromEntries(ARRAY_KEYS.map(k=>[k,encodeB64(record[k])]))};
+}
+export function unpackEncryptedRecord(data){
+ if(!data||data.version!==1||!Number.isInteger(data.size)||data.size<1||data.size>MAX_FILE_BYTES)throw Error("Unsupported encrypted record.");
+ const record={...data,...Object.fromEntries(ARRAY_KEYS.map(k=>[k,decodeB64(data[k])]))};
+ if(record.salt.length!==16||record.bodyIv.length!==12||record.metaIv.length!==12||record.body.length!==data.size+16||record.header.length<16||record.header.length>2000)throw Error("Invalid encrypted record dimensions.");
+ if(typeof record.caseId!=="string"||record.caseId.length>160||typeof record.createdAt!=="string"||record.createdAt.length>70)throw Error("Invalid encrypted record metadata.");
+ return {...record,id:crypto.randomUUID()};
+}
+export async function exportEncryptedVaultBackup(){
+ const rows=await transaction("readonly",store=>store.getAll());
+ if(rows.length>100||rows.reduce((sum,r)=>sum+r.size,0)>64*1024*1024)throw Error("Vault exceeds backup limit (100 files or 64 MB).");
+ const body=JSON.stringify({format:"commonground-encrypted-vault-v1",exportedAt:new Date().toISOString(),items:rows.map(packEncryptedRecord)},null,2);
+ const blob=new Blob([body],{type:"application/json"});
+ const link=URL.createObjectURL(blob);
+ const a=document.createElement("a");a.href=link;a.download="commonground-encrypted-vault.json";a.click();
+ setTimeout(()=>URL.revokeObjectURL(link),5000);
+ return rows.length;
+}
+export async function restoreEncryptedVaultBackup(file){
+ if(!file||file.size>95*1024*1024)throw Error("Encrypted backup exceeds 95 MB.");
+ const raw=JSON.parse(await file.text());
+ if(raw?.format!=="commonground-encrypted-vault-v1"||!Array.isArray(raw.items)||raw.items.length>100)throw Error("Not a supported encrypted vault backup.");
+ let sum=0;
+ const rows=raw.items.map(item=>{const record=unpackEncryptedRecord(item);sum+=record.size;return record;});
+ if(sum>64*1024*1024)throw Error("Encrypted backup exceeds 64 MB.");
+ for(const row of rows)await transaction("readwrite",store=>store.put(row));
+ return rows.length;
+}

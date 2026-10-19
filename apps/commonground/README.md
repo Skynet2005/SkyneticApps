@@ -7,7 +7,7 @@ Independent Florida-first HOA procedural fairness and dispute-workspace prototyp
 - Local case management, procedural completeness checks, status and history
 - Source-linked Florida law navigator (architecture/fences, fines, records, elections, financial collections)
 - Field-level before/after audit events with SHA-256 local hash links and last recorded state verification
-- Local encrypted evidence vault: AES-256-GCM, PBKDF2/SHA-256 600,000 iterations, random per-item salts and nonces, encrypted filenames, ciphertext in IndexedDB, SHA-256 verified decrypt-and-download
+- Local encrypted evidence vault with portable encrypted backup and restore: AES-256-GCM, PBKDF2/SHA-256 600,000 iterations, random per-item salts and nonces, encrypted filenames, ciphertext in IndexedDB, SHA-256 verified decrypt-and-download
 - Browser-local import/export, Markdown case briefs, governance charter, responsive oversight interface
 
 ## Run and test

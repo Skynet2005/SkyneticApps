@@ -44,7 +44,7 @@ export default function SharedWorkspace(){
  }
  async function openCase(c){setDetails(c);setActivity([]);setNotice("");try{const data=await request("/api/events?id="+encodeURIComponent(c.id));setActivity(data.events)}catch(e){setNotice(e.message)}}
  async function addNote(e){e.preventDefault();if(!details||!note.trim())return;setBusy(true);
-  try{await request("/api/events",{method:"POST",body:JSON.stringify({id:details.id,type:"Activity noted",note})});setNote("");const [log,list]=await Promise.all([request("/api/events?id="+encodeURIComponent(details.id)),request("/api/cases")]);setActivity(log.events);setCases(list.cases);setNotice("Signed-in activity recorded in the database.")}
+  try{await request("/api/events",{method:"POST",body:JSON.stringify({id:details.id,type:"Activity noted",note,expectedVersion:details.version})});setNote("");const [log,list]=await Promise.all([request("/api/events?id="+encodeURIComponent(details.id)),request("/api/cases")]);setActivity(log.events);setCases(list.cases);setDetails(list.cases.find(c=>c.id===details.id)||details);setNotice("Signed-in activity recorded in the database.")}
   catch(e){setNotice(e.message)}finally{setBusy(false)}
  }
  async function logout(){setBusy(true);try{await request("/api/auth/logout",{method:"POST",body:"{}"});setMe(null);setCases([]);setDetails(null);setNotice("Signed out.")}catch(e){setNotice(e.message)}finally{setBusy(false)}}

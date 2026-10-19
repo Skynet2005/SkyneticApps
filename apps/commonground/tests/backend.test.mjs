@@ -1,3 +1,4 @@
+import logout from "../api/auth/logout.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {validEmail,sameOrigin,digestToken,requireJSON,configured} from "../server/core.js";
@@ -30,4 +31,18 @@ test("reject content type confusion and malformed JSON payloads",()=>{
  assert.throws(()=>requireJSON({headers:{"content-type":"text/plain"},body:{}}),/JSON content required/);
  assert.throws(()=>requireJSON({headers:{"content-type":"application/json"},body:[]}),/Invalid JSON object/);
  assert.deepEqual(requireJSON({headers:{"content-type":"application/json"},body:{title:"test"}}),{title:"test"});
+});
+
+test("logout remains harmless while shared infrastructure is disabled",async()=>{
+ const old=process.env.SHARED_BETA_ENABLED;
+ delete process.env.SHARED_BETA_ENABLED;
+ try{
+  const headers={};
+  const res={statusCode:0,body:null,setHeader(k,v){headers[k]=v;},status(n){this.statusCode=n;return this;},json(v){this.body=v;return this;}};
+  await logout({method:"POST",headers:{}},res);
+  assert.equal(res.statusCode,200);
+  assert.equal(res.body.authenticated,false);
+  assert.equal(res.body.mode,"local-only");
+  assert.ok(headers["Set-Cookie"].includes("Max-Age=0"));
+ }finally{if(old!==undefined)process.env.SHARED_BETA_ENABLED=old}
 });

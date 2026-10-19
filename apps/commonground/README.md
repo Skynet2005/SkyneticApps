@@ -1,3 +1,17 @@
+# CommonGround v0.4 — Process assurance and backend hardening
+
+Live application: https://commonground-nu.vercel.app
+
+This release repairs sign-in authorization under deny-by-default RLS, makes migration journaling transactional, enforces version checks before authenticated case edits, routes email links directly to the correct view, and adds deterministic resident-facing process review under Oversight.
+
+**Important:** The actual hosted PostgreSQL database and mail provider are still not connected. Shared accounts and hosted cases remain disabled; the active case and encrypted-evidence workflows are browser-local. Do not enter real resident information in unencrypted browser case fields. The encrypted vault does not establish independent evidentiary custody.
+
+Validation: 24 passing tests in the Node 24 Vercel sandbox, a successful Vite production build, and PostgreSQL-compatible migration/authorization tests. Independent security review and legal review are still required before real community use.
+
+Release methodology and residual risks: docs/security-review-v04.md
+
+---
+
 # CommonGround v0.3 — Integrated Data Architecture
 
 CommonGround is a Florida-first HOA fairness, evidence and independent governance project. The UI is deployed at https://commonground-nu.vercel.app and GitHub contains a **vertically integrated PostgreSQL data architecture**, a feature atlas and a gated authenticated backend.

@@ -102,13 +102,8 @@ export async function session(req){
  const token=cookie(req,"cg_session");
  if(!token||token.length>128)return null;
  const p=await db();
- const r=await p.query(`SELECT account_id FROM app.sessions WHERE token_digest=$1
-   AND expires_at>now() AND revoked_at IS NULL LIMIT 1`,[digestToken(token)]);
- if(!r.rows[0])return null;
- const actor=r.rows[0].account_id;
- const enabled=await asActor(actor,client=>client.query(
-   "SELECT 1 FROM app.accounts WHERE id=$1 AND disabled_at IS NULL",[actor]));
- return enabled.rowCount?actor:null;
+ const result=await p.query("SELECT app.auth_session_account($1) AS actor",[digestToken(token)]);
+ return result.rows[0]?.actor||null;
 }
 export function setSessionCookie(res,token,maxAge=60*60*24*14){
  const cookie=`cg_session=${encodeURIComponent(token)}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`;

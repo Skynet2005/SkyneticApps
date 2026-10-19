@@ -12,11 +12,13 @@ export default async function handler(req,res){
   }
   const data=requireJSON(req,16000);
   if(!uuid(data.id))return reply(res,400,{error:"Invalid case id"});
+  if(!Number.isSafeInteger(data.expectedVersion)||data.expectedVersion<1)return reply(res,400,{error:"Expected case version required"});
   const type=stringField(data.type||"Activity noted",70),note=stringField(data.note||"",12000);
   if(note.length<3)return reply(res,400,{error:"Provide a meaningful note"});
   const result=await asActor(actor,async client=>{
    const found=await client.query("SELECT id,version FROM app.cases WHERE id=$1 AND created_by=$2 AND deleted_at IS NULL FOR UPDATE",[data.id,actor]);
    if(!found.rowCount)return null;
+   if(found.rows[0].version!==data.expectedVersion)throw Object.assign(new Error("Case changed in another session. Reload before adding activity."),{status:409});
    const version=found.rows[0].version+1;
    const last=await client.query("SELECT digest FROM app.case_events WHERE case_id=$1 ORDER BY case_version DESC LIMIT 1",[data.id]);
    const prev=last.rows[0]?.digest||"GENESIS";

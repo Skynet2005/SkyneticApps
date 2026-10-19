@@ -64,7 +64,7 @@ export function assertConfigured(){
 export async function db(){
  assertConfigured();
  if(!pool){
-  pool=new Pool({connectionString:process.env.DATABASE_RUNTIME_URL,max:5,connectionTimeoutMillis:5000,idleTimeoutMillis:20000,ssl:process.env.DATABASE_SSL==="disable"?false:undefined});
+  pool=new Pool({connectionString:process.env.DATABASE_RUNTIME_URL,max:5,connectionTimeoutMillis:5000,idleTimeoutMillis:20000,ssl:process.env.DATABASE_SSL==="disable"&&process.env.NODE_ENV!=="production"?false:{rejectUnauthorized:true}});
  }
  // Never let migration-owner credentials be used to serve application traffic.
  if(!safety){

@@ -1,3 +1,33 @@
+# CommonGround v0.3 — Integrated Data Architecture
+
+CommonGround is a Florida-first HOA fairness, evidence and independent governance project. The UI is deployed at https://commonground-nu.vercel.app and GitHub contains a **vertically integrated PostgreSQL data architecture**, a feature atlas and a gated authenticated backend.
+
+## Live and tested today
+- Browser-local case-management prototype, legal procedure navigator, charter, audit checks and encrypted evidence vault
+- Encrypted offline vault backup / restore
+- Interactive product architecture / feature atlas and shared-workspace readiness view
+- Tests for database migration, case isolation under a distinct runtime role, append-only audit records, and default-deny mediation/accounting data
+
+## NOT yet enabled as a hosted service
+- No live PostgreSQL instance or authenticated email service has been attached to the Vercel project
+- Hosted user login and private case APIs are implemented but **disabled by default** pending database and email configuration
+- No actual shared HOA invite, ownership verification, private remote evidence store, election, payments, mediator access or AI judgments
+
+## Run from apps/commonground
+
+    npm install
+    npm test
+    npm run build
+    npm run dev
+
+Database migrations require a separately authorized migration-owner connection and formal operator approval. Read docs/deployment-runbook.md, docs/platform-architecture.md, docs/feature-review.md, and docs/release-gates.md before activating any shared hosted data.
+
+**Keep real resident evidence out of the local case text fields.** localStorage is plaintext. Only local vault file bytes and filenames are encrypted; they are not sent to Vercel. No data should be mistaken for a legally authenticated record merely because it has a hash.
+
+Primary source for legal research: https://www.flsenate.gov/Laws/Statutes/2026/Chapter720
+
+---
+
 # CommonGround (v0.2)
 Independent Florida-first HOA procedural fairness and dispute-workspace prototype.
 

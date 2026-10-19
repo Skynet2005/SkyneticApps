@@ -10,6 +10,8 @@ test("private database authentication functions are permissioned and replay-safe
   await db.exec("CREATE ROLE commonground_runtime");
   await db.exec(await readFile(new URL("../ops/runtime-grants.sql",import.meta.url),"utf8"));
   await db.exec("SET ROLE commonground_runtime");
+  await assert.rejects(db.query("SELECT * FROM app.login_tokens"),/permission denied/i);
+  await assert.rejects(db.query("SELECT app.upsert_verified_account($1)",["unauthorized@example.org"]),/permission denied/i);
   const token="a".repeat(64),session="b".repeat(64);
   const created=await db.query("SELECT app.auth_issue_link($1,$2,$3) AS id",["pilot@example.org",token,"c".repeat(64)]);
   assert.ok(created.rows[0].id);

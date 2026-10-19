@@ -91,3 +91,38 @@
 @media(max-width:1040px){.atlas-layout{grid-template-columns:1fr}.atlas-directory{display:grid;grid-template-columns:repeat(2,1fr)}.atlas-priority-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:720px){.atlas-hero{flex-wrap:wrap;padding:24px}.atlas-numbers{width:100%}.shared-status-grid{grid-template-columns:1fr}.atlas-directory{grid-template-columns:1fr}.atlas-priority-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:500px){.atlas-numbers{gap:5px}.atlas-numbers div{padding:12px 6px}.atlas-numbers b{font-size:20px}.atlas-hero h2{font-size:23px}.atlas-details{padding:17px}.atlas-priority-grid{grid-template-columns:1fr}.shared-user{flex-wrap:wrap}.shared-not-ready{padding:30px 18px}}
+
+/* v0.4 deterministic process assurance workbench */
+.review-workbench{margin-top:38px}.review-workbench .section-head{margin-bottom:19px}
+.review-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.review-metrics>div{background:#fff;border:1px solid #e1eaf0;border-radius:12px;padding:17px}
+.review-metrics>div>span{display:flex;color:#38917d}.review-metrics b{display:block;color:#243e4b;font-size:25px;font-family:Manrope,sans-serif;margin:9px 0 3px}
+.review-metrics small{font-size:10px;color:#8fa0ab}
+.review-intro{display:flex;gap:10px;align-items:flex-start;background:#eef6f6;border:1px solid #dcebef;border-radius:10px;color:#68808a;font-size:11px;line-height:1.65;margin:18px 0;padding:15px}
+.review-intro svg{flex-shrink:0;color:#3a918a}
+.review-filters{display:flex;align-items:center;gap:12px;justify-content:flex-end;margin:0 0 13px;color:#687e8a;font-size:11px;font-weight:700}
+.review-filters select{border:1px solid #dae6e9;border-radius:8px;background:white;padding:9px 13px;color:#405969;min-width:190px}
+.review-grid{display:grid;grid-template-columns:minmax(265px,.8fr) minmax(0,1.45fr);gap:16px;align-items:start}
+.review-case-list{overflow:hidden}.review-case-option{background:#fff;border:0;border-bottom:1px solid #eef1f4;width:100%;padding:15px;display:flex;align-items:center;gap:10px;text-align:left}
+.review-case-option:hover,.review-case-option.selected{background:#f0f8f5}
+.review-case-symbol{border-radius:9px;background:#ecf3f3;display:flex;align-items:center;justify-content:center;color:#5e8b8b;width:36px;height:36px;flex-shrink:0}
+.review-case-text{flex:1;min-width:0}.review-case-text b{display:block;font-size:12px;color:#334d5d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.review-case-text small{display:block;font-size:10px;color:#95a4b1;margin-top:5px}
+.review-case-number{color:#53846d;background:#ebf8ed;border-radius:17px;padding:5px 7px;white-space:nowrap;font-size:10px;font-weight:800}
+.review-case-number.open{color:#ab7b37;background:#fff5e8}
+.review-analysis{padding:23px}.review-analysis-head .eyebrow{font-size:9px}.review-analysis-head h3{font-size:19px;margin:10px 0 4px}
+.review-analysis-head p{font-size:11px;color:#9aabba}.review-issues{margin:19px 0}
+.review-issue{display:flex;gap:12px;padding:14px 0;border-top:1px solid #edf1f3}
+.review-severity{width:31px;height:31px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:9px;color:#b58841;background:#fff4e6}
+.review-severity.high{color:#bb7b48;background:#fff0e9}.review-severity.low{color:#5d8b8b;background:#edf6f5}
+.review-issue b{font-size:11px;line-height:1.5;color:#3a5361}.review-issue p{font-size:10px;color:#839aa7;line-height:1.7;margin:6px 0 0}
+.review-complete{display:flex;gap:12px;padding:16px;background:#eaf7ef;color:#2c8067;border-radius:9px}.review-complete p{font-size:10px;margin:5px 0 0;line-height:1.65}
+.review-compare{border:1px solid #e0ebea;background:#f6faf9;border-radius:11px;padding:16px;margin:20px 0}
+.review-compare-head{display:flex;gap:11px;align-items:center;color:#358b7e;margin-bottom:11px}
+.review-compare-head b{display:block;font-size:12px;color:#38555a}.review-compare-head small{display:block;color:#8198a1;font-size:10px;margin-top:5px}
+.review-compare>p{color:#69828b;font-size:10px;line-height:1.75;margin:9px 0}
+.review-compare-list button{width:100%;background:white;border:1px solid #e2ecea;padding:11px;display:flex;align-items:center;justify-content:space-between;text-align:left;border-radius:8px;margin-top:8px;color:#458b82}
+.review-compare-list b{display:block;color:#3d5968;font-size:11px}.review-compare-list small{display:block;font-size:10px;color:#91a4af;margin-top:4px}
+.review-method{display:flex;align-items:flex-start;gap:10px;font-size:10px;line-height:1.7;color:#91a0ae;margin-top:15px}.review-method svg{flex-shrink:0;color:#76a39d}
+@media(max-width:1020px){.review-grid{grid-template-columns:1fr}.review-case-list{max-height:260px;overflow-y:auto}}
+@media(max-width:640px){.review-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.review-analysis{padding:17px}.review-filters{justify-content:flex-start}}

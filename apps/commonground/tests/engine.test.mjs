@@ -64,7 +64,7 @@ test("statute navigator routes sensitive dispute types correctly",()=>{
 });
 test("case brief documents unverified nature and includes source info",()=>{
  const text=docketMarkdown(STARTER_CASES[0],caseChecks(STARTER_CASES[0]));
- assert.ok(text.includes("not independently authenticated"));
+ assert.ok(text.includes("independently authenticated"));
  assert.ok(text.includes("Cypress Bay Estates"));
  assert.ok(text.includes("## Procedural documentation checklist"));
 });

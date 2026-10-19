@@ -46,22 +46,44 @@ export function id(){return typeof crypto!=="undefined"&&crypto.randomUUID?crypt
 export function load(key,fallback){try{const data=JSON.parse(localStorage.getItem(key)||"null");return data??fallback}catch{return fallback}}
 export function save(key,val){try{localStorage.setItem(key,JSON.stringify(val));return true}catch{return false}}
 export async function sha256(text){const data=new TextEncoder().encode(text);const bytes=await crypto.subtle.digest("SHA-256",data);return [...new Uint8Array(bytes)].map(x=>x.toString(16).padStart(2,"0")).join("")}
-export async function appendEvent(current,type,note){
+
+const SNAPSHOT_FIELDS=["title","community","category","status","createdAt","description","rule","evidence","resolution","responded","independent"];
+function snapshot(c){return Object.fromEntries(SNAPSHOT_FIELDS.map(k=>[k,c[k]??null]))}
+export async function snapshotHash(c){return sha256(JSON.stringify(snapshot(c)))}
+export async function appendEvent(current,type,note,previousCase=null){
  const previous=current.events.at(-1)?.hash||"GENESIS";
- const event={id:id(),when:new Date().toISOString(),by:"Local workspace user (unverified)",type,note,previousHash:previous};
- event.hash=await sha256(previous+"|"+event.id+"|"+event.when+"|"+event.by+"|"+event.type+"|"+event.note);
+ const event={id:id(),when:new Date().toISOString(),by:"Local workspace user (unverified)",type,note,previousHash:previous,version:2};
+ const changes={};
+ if(previousCase)for(const key of SNAPSHOT_FIELDS)if(JSON.stringify(previousCase[key]??null)!==JSON.stringify(current[key]??null))changes[key]={from:previousCase[key]??null,to:current[key]??null};
+ event.changes=changes;
+ event.snapshotHash=await snapshotHash(current);
+ event.hash=await sha256("v2|"+previous+"|"+event.id+"|"+event.when+"|"+event.by+"|"+event.type+"|"+event.note+"|"+JSON.stringify(event.changes)+"|"+event.snapshotHash);
  return {...current,events:[...current.events,event]};
 }
 export async function verifyEvents(events){
  let previous="GENESIS";
+ let seenHashed=false;
  for(const e of events){
-  if(!e.hash){if(e.previousHash||e.hash)return false;previous="GENESIS";continue}
+  if(!e.hash){
+   if(seenHashed || e.previousHash||e.hash)return false;
+   continue;
+  }
+  seenHashed=true;
   if(e.previousHash!==previous)return false;
-  const actual=await sha256(previous+"|"+e.id+"|"+e.when+"|"+e.by+"|"+e.type+"|"+e.note);
+  const actual=e.version===2?
+   await sha256("v2|"+previous+"|"+e.id+"|"+e.when+"|"+e.by+"|"+e.type+"|"+e.note+"|"+JSON.stringify(e.changes||{})+"|"+e.snapshotHash):
+   await sha256(previous+"|"+e.id+"|"+e.when+"|"+e.by+"|"+e.type+"|"+e.note);
   if(actual!==e.hash)return false;
   previous=e.hash;
  }
  return true;
+}
+export async function verifyCase(c){
+ const valid=await verifyEvents(c.events||[]);
+ if(!valid)return {verified:false,level:"mismatch"};
+ const last=(c.events||[]).at(-1);
+ if(last?.version===2)return {verified:await snapshotHash(c)===last.snapshotHash,level:"v2"};
+ return {verified:true,level:"legacy"};
 }
 export function safeImport(raw){
  if(!raw || !Array.isArray(raw.cases) || raw.cases.length>500)return null;
@@ -72,7 +94,7 @@ export function safeImport(raw){
   createdAt:text(c.createdAt)||new Date().toISOString(),description:text(c.description),
   rule:text(c.rule),evidence:text(c.evidence),resolution:text(c.resolution),
   independent:!!c.independent,responded:!!c.responded,
-  events:Array.isArray(c.events)?c.events.slice(0,300).map(e=>({id:text(e.id),when:text(e.when),by:text(e.by),type:text(e.type),note:text(e.note),previousHash:e.previousHash===null?null:text(e.previousHash),hash:e.hash===null?null:text(e.hash)})):[]
+  events:Array.isArray(c.events)?c.events.slice(0,300).map(e=>({id:text(e.id),when:text(e.when),by:text(e.by),type:text(e.type),note:text(e.note),previousHash:e.previousHash===null?null:text(e.previousHash),hash:e.hash===null?null:text(e.hash),version:e.version===2?2:undefined,snapshotHash:text(e.snapshotHash),changes:e.changes&&typeof e.changes==="object"?Object.fromEntries(Object.entries(e.changes).filter(([key,v])=>["title","community","category","status","createdAt","description","rule","evidence","resolution","responded","independent"].includes(key)&&v&&typeof v==="object").map(([key,v])=>[key,{from:typeof v.from==="boolean"?v.from:typeof v.from==="string"?v.from.slice(0,12000):null,to:typeof v.to==="boolean"?v.to:typeof v.to==="string"?v.to.slice(0,12000):null}])):{}})):[]
  })).filter(c=>c.title);
  return cases;
 }
